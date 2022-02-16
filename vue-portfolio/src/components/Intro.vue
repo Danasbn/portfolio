@@ -1,18 +1,20 @@
 <template>
-  <div>
-    <h2 class="display-2 font-weight-bold mb-3">
-      {{ message }}
+  <section class="intro">
+    <h2 class="display-2 font-weight-bold mb-3" v-html="getMessage">
     </h2>
-    <p><small>{{ smallMessage }}</small></p>
-    <v-switch
-      id="switchDarkMode"
-      :style="style"
-      v-model="$vuetify.theme.dark"
-      inset
-      label="Dark mode"
-      persistent-hint
-      @click="newIntro(); hideSwitch()"
-    />
+    <h3 ><p v-html="getSmallMessage"></p></h3>
+    <div class="switch-container">
+      <v-switch
+        id="switchDarkMode"
+        :style="style"
+        v-model="$vuetify.theme.dark"
+        inset
+        label="Dark mode"
+        color="indigo darken-3"
+        @click=" hideSwitch(); "
+        
+      />
+    </div>
     <v-responsive
       class="mx-auto mb-8"
       width="56"
@@ -62,7 +64,7 @@
           max-width="720">
               Désormais je souhaite continuer mon apprentissage du développement web en rejoignant une entreprise qui saura m'accompagner en CDI ou en contrat de professionnalisation.
           </v-responsive> -->
-  </div>
+  </section>
 </template>
 
 <script>
@@ -70,22 +72,49 @@ export default {
 
     data() {
         return {
-
-            message: "Ca pique ?",
-            smallMessage: "Le but était d'attirer votre attention ! Activez le dark mode ci dessous pour le bien de vos pupilles.",
+            lightMode: {
+              message: "Ça pique<br/>les yeux ?",
+              smallMessage: "Le but était d'attirer votre attention ! Activez le dark mode ci-dessous pour le bien de vos pupilles.",
+            },
+            darkMode: {
+              message: "Allez, lisons la suite !",
+              smallMessage: "Oui, j'ai enlevé le bouton, on n'est pas là pour s'amuser avec un switch !",
+            },
+            
             style: "display:inline-block",
 
         };
 
     },
+    computed: {
+      getMessage() {
+        if(this.$vuetify.theme.isDark) {
+          return this.darkMode.message;
+        }
+        else {
+          return this.lightMode.message;
+        }
+        // return 'test';
+        // console.log(this.$vuetify.theme.isDark);
+      },
+      getSmallMessage(){
+          if(this.$vuetify.theme.isDark) {
+          return this.darkMode.smallMessage;
+        }
+        else {
+          return this.lightMode.smallMessage;
+        }
+      }
+    },
     methods: {
-        newIntro() {
-            this.message = 'Allez, lisons la suite ! ';
-            this.smallMessage = 'Oui, j\'ai enlevé le bouton, on est pas là pour s\'amuser avec un switch !';
-        },
+       
         hideSwitch() {
             this.style = "display:none";
         },
+   /*      changeSizes(){
+            this.titleSize ="";
+            this.smallerSize = "";
+        } */
         /*     hideVisit(){
 
             if(this.post.site_url ==="https://dandev.fr"){
@@ -100,7 +129,15 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+
+.intro {
+  .switch-container {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
 .v-card-text {
     padding-top: 10px
 }
@@ -153,6 +190,7 @@ span#Lumen {
 h1 {
     text-align: center;
 }
+
 
 h3 {
     text-align: center;

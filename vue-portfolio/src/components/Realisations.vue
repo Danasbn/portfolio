@@ -1,6 +1,6 @@
 <template>
   <!-- REALISATIONS -->
-  <div id="realisations d-flex">
+  <section id="realisations d-flex">
     <h1>Voici les differents projets sur lesquels j'ai travaillé</h1>
     <h3>Cette liste sera mise à jour au fur et à mesure</h3>
     <div class="row justify-space-around">
@@ -64,7 +64,7 @@
         </v-card>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -81,7 +81,7 @@ export default {
                 per_page: 10, // All blog posts.
                 // page: 1, // Current page of the collection.
                 _embed: true, //Response should include embedded resources.
-                orderBy: "asc"
+                
             },
             // Returned Posts in an Array
             posts: [],
@@ -102,11 +102,11 @@ export default {
                     this.posts = response.data;
 
                     //  console.log("Posts retrieved!");
-                    console.log(this.post.site_url);
-                    console.log(this.posts);
+/*                     console.log(this.post.site_url);
+                    console.log(this.posts); */
                 })
                 .catch(error => {
-                    console.log(error);
+                     console.log(error);
                 });
         },
         getPostTags() {

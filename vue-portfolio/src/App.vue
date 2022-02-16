@@ -59,6 +59,9 @@
 </template>
 
 <script>
+console.log('%c' + "Salut à toi jeune developpeur", 'color: #0bf; font-size: 2rem; background-color:#f0f');
+
+console.log('%c' + "La reference : https://www.youtube.com/watch?v=5wGPtj3yD-k&ab_channel=JimRecord", 'color: #0bf; font-size: 1rem; background-color:#fff');
 export default {
 
     data: () => ({
@@ -84,7 +87,46 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+/* .v-card__title {
+    font-family: 'Anton', sans-serif !important;
+    letter-spacing: 2px !important;
+
+} */
+.v-application {
+  transition: background-color 1s;
+}
+
+.v-application.theme--light {
+  .intro {
+    h2 {
+      font-family: 'Anton', sans-serif !important;
+      font-size: 6rem !important;
+      text-align: center;
+      display:inline-block;
+      line-height: 8rem;
+      color:#f0f;
+      transform: rotate(-5deg);
+    }
+  }
+}
+
+.v-application.theme--dark {
+  .intro {
+    h2 {
+      color: rgb(28, 190, 222);
+      display:inline-block;
+      font-family: 'Anton', sans-serif !important;
+      font-size: 5rem !important;
+      line-height: 7rem;
+    }
+  }
+}
+
+
+
+
+
 .v-input__control {
     margin-left: 16px;
 }
