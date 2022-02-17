@@ -11,7 +11,7 @@
         inset
         label="Dark mode"
         color="indigo darken-3"
-        @click=" hideSwitch(); "
+        
         
       />
     </div>
@@ -107,10 +107,10 @@ export default {
       }
     },
     methods: {
-       
-        hideSwitch() {
+       // 3 methodes gérées en css, plus simple.
+/*         hideSwitch() {
             this.style = "display:none";
-        },
+        }, */
    /*      changeSizes(){
             this.titleSize ="";
             this.smallerSize = "";

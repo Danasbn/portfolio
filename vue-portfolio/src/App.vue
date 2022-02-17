@@ -123,6 +123,14 @@ export default {
   }
 }
 
+.v-application.theme--dark {
+  .intro {
+    .switch-container{
+      display:none;
+    }
+  }
+}
+
 
 
 
